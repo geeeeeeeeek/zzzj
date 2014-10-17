@@ -1,0 +1,8 @@
+<?php
+	session_start();
+	$ans=$_POST['ans'];
+	if($ans==$_SESSION['ans'])
+		echo 1;
+	else
+		echo 0;
+?>

@@ -1,0 +1,8 @@
+<?php
+	session_start();
+	require_once("connectsql.php");
+	$string="update user set quesnum=0 where id= (".$_SESSION['userid'].")";
+	mysql_query($string);
+	echo $_SESSION['score'];
+	
+?>

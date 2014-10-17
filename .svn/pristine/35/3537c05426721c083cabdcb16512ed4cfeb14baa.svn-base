@@ -1,0 +1,49 @@
+<?php
+	session_start();
+	$result=$_GET['result'];
+	$fail=false;
+	$appsecret='866a8c4d276287c075cfde1a46a360602fbefc1e4d0e05a72a15480b089138a2';
+	if($result==1){
+		if(isset($_GET['stuid']))
+			$stuid=$_GET['stuid'];
+		else
+			$stuid="";
+		if(isset($_GET['email']))
+			$email=$_GET['email'];
+		else
+			$email="";
+		if(isset($_GET['sign']))
+			$sign=$_GET['sign'];
+		else
+			$sign="";
+		if(isset($_GET['uid']))
+			$uid=$_GET['uid'];
+		else
+			$uid="";
+		if(isset($_GET['token']))
+			$token=$_GET['token'];
+		else
+			$token="";
+		if(isset($_GET['username']))
+			$username=$_GET['username'];
+		else
+			$username="";
+		if($sign==hash("sha256",$token."|".$uid."|".$username."|".$stuid."|".$email."|".$appsecret)){
+			$_SESSION['userid']=$stuid;
+		}
+		else
+			$fail=true;
+	}
+	else
+		$fail=true;
+	if($fail==true){
+		$url = "http://stu.fudan.edu.cn/ztalents/php/connecttel.php";
+	}
+	else{
+		$url="http://stu.fudan.edu.cn/ztalents/main.html"
+	}
+	echo "<script language='javascript' type='text/javascript'>";
+	echo "window.location.href='$url'";
+	echo "</script>";
+	
+?>

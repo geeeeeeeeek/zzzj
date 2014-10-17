@@ -1,0 +1,23 @@
+<?php
+	header('content-type:text/html;charset=utf-8');
+	$con = mysql_connect("localhost","root","root");
+	if (!$con)
+	{
+	die('Could not connect: ' . mysql_error());
+	}
+	mysql_select_db("questions");
+	$string="select count(*) from questions";
+	mysql_query("SET NAMES UTF8"); 
+	$result=mysql_query($string);
+	$num=mysql_fetch_array($result);
+	$count=$num[0];
+	$num=rand(1,$count);
+	$string="select * from questions where id=$num";
+	$result=mysql_query($string);
+	$result=mysql_fetch_array($result);
+	$str=$result["question"];
+	$id=$result["id"];
+	$ans=$result["answer"];
+	$time=$result["timelimit"];
+	mysql_close($con);
+?>

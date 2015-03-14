@@ -2,17 +2,19 @@
 	require_once("connectsql.php");
 	if($_SESSION["userid"]!=null){
 		$string="select count(*) from questions";
-		mysqli_query($con, "SET NAMES UTF8");
 		$result=mysqli_query($con, $string);
 		$num=mysqli_fetch_array($result);
 		$count=$num[0];
 		try{
-			$num=$_GET["id"];
-			$count=$_GET['count'];
+			$num=(intval($_GET["id"]));
+			$count=(intval($_GET['count']));
 		}
 		catch(Exception $e){
 	
 		}
+        if($num==0){
+            die("Cannot get null thing.");
+        }
 		$string="update user set actnum = (actnum+1) where id=".$_SESSION['userid'];
 		mysqli_query($con, $string);
 		$string="select * from questions where id=$num";

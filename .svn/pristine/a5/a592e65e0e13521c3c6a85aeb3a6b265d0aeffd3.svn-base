@@ -1,4 +1,0 @@
-<?php
-	session_start();
-	$_SESSION['userid']=11300240011;
-?>

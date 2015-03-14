@@ -2,9 +2,9 @@
 	require_once("connectsql.php");
 	session_start();
 	$string="select * from user where id=".$_SESSION['userid'];
-	$result=mysql_query($string);
+	$result=mysqli_query($con, $string);
 	if($result){
-		$result=mysql_fetch_array($result);
+		$result=mysqli_fetch_array($result);
 		$_SESSION['score']=$result['score'];
 		echo $result['quesnum'];
 	}

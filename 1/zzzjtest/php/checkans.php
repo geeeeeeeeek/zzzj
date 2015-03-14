@@ -5,7 +5,7 @@
 
 	
 	$string="update user set score=".$_SESSION['score']." where id=".$_SESSION['userid'];
-	mysql_query($string);
+	mysqli_query($con, $string);
 	try{
 		$ans=$_POST['ans'];
 	}

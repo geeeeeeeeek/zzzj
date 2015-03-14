@@ -1,13 +1,10 @@
 <?php
 	header('content-type:text/html;charset=utf-8');
-	$con = mysql_connect("localhost","zzzj","zzzj");
-	mysql_query("SET NAMES 'UTF8'"); 
+	$con = mysqli_connect("localhost","zzzj","zzzj", "questions");
+	mysqli_query($con, "SET NAMES 'UTF8'");
 	$num=null;
 	if (!$con)
 	{
-	die('Could not connect: ' . mysql_error());
+	    die('Could not connect: ' . mysqli_error());
 	}
-	mysql_select_db("questions");
-	
-	
 ?>

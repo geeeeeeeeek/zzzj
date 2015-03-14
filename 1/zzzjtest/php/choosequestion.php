@@ -3,11 +3,11 @@
 	if(isset($_GET['type']))
 		$category=$_GET['type'];
 	$string="select id from questions where category=".$category;
-	$result=mysql_query($string);
+	$result=mysqli_query($con, $string);
 	$return=[];
 	$id=[];
 	$num=0;
-	while($row = mysql_fetch_array($result)){
+	while($row = mysqli_fetch_array($result)){
 		$id[$num]=$row['id'];
 		$num++;
 	}
@@ -20,10 +20,10 @@
 
 	}
 	$string="select id from questions where category=0";
-	$result=mysql_query($string);
+	$result=mysqli_query($con, $string);
 	$id=[];
 	$num=0;
-	while($row = mysql_fetch_array($result)){
+	while($row = mysqli_fetch_array($result)){
 		$id[$num]=$row['id'];
 		$num++;
 	}
@@ -42,15 +42,15 @@
 	$_SESSION['score']=0;
 
 	$string="select * from user where id= (".$_SESSION['userid'].")";
-	$result=mysql_query($string);
-	$result=mysql_fetch_array($result);
+	$result=mysqli_query($con, $string);
+	$result=mysqli_fetch_array($result);
 	if($result==null){
 		$string="insert into user(id,quesnum,score,category) values (".$_SESSION['userid'].",0,0,".$category.")";
-		mysql_query($string);
+		mysqli_query($con, $string);
 	}
 	else{
 		$string="update user set quesnum=0, score=0 ,category=".$category." where id= (".$_SESSION['userid'].")";
-		mysql_query($string);
+		mysqli_query($con, $string);
 	}
 	echo json_encode($datatemp);
 ?>

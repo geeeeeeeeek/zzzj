@@ -2,9 +2,9 @@
 	require_once("connectsql.php");
 	if($_SESSION["userid"]!=null){
 		$string="select count(*) from questions";
-		mysql_query("SET NAMES UTF8"); 
-		$result=mysql_query($string);
-		$num=mysql_fetch_array($result);
+		mysqli_query($con, "SET NAMES UTF8");
+		$result=mysqli_query($con, $string);
+		$num=mysqli_fetch_array($result);
 		$count=$num[0];
 		try{
 			$num=$_GET["id"];
@@ -14,10 +14,10 @@
 	
 		}
 		$string="update user set actnum = (actnum+1) where id=".$_SESSION['userid'];
-		mysql_query($string);
+		mysqli_query($con, $string);
 		$string="select * from questions where id=$num";
-		$result=mysql_query($string);
-		$result=mysql_fetch_array($result);
+		$result=mysqli_query($con, $string);
+		$result=mysqli_fetch_array($result);
 		$str=$result["question"];
 		$id=$result["id"];
 		$ansa=$result["ansa"];
@@ -33,7 +33,7 @@
     	$_SESSION['ansc']=$ansc;
     	$_SESSION['ansd']=$ansd;
     	$string="update user set quesnum = (quesnum+1) where id=".$_SESSION['userid'];
-		mysql_query($string);
+		mysqli_query($con, $string);
 	}
     
 ?>

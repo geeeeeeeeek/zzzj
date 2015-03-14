@@ -3,11 +3,11 @@
 	require_once("connectsql.php");
 	session_start();
 	$string="select id from userin where id=(".$_SESSION['userid'].")";
-	$result=mysql_query($string);
+	$result=mysqli_query($con, $string);
 	$return=[];
 	$id=[];
 	$num=0;
-	while($row = mysql_fetch_array($result)){
+	while($row = mysqli_fetch_array($result)){
 		$id[$num]=$row['id'];
 		$num++;
 	}

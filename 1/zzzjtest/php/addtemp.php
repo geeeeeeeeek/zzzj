@@ -84,7 +84,7 @@
 	    		echo "   ";
 	    		echo $answer;
 	    		$string="insert into questions (question,category,answer,ansa,ansb,ansc,ansd) values('".implode($que)."',2,'".$answer."','".implode($ans[0])."','".implode($ans[1])."','".implode($ans[2])."','".implode($ans[3])."')";
-	    		$result=mysql_query($string);
+	    		$result=mysqli_query($con, $string);
 	    		echo $result;
 	    		//echo $string;
 	    	}
@@ -96,5 +96,5 @@
 
 	}
 	fclose ($f);
-	mysql_close($con);
+	mysqli_close($con);
 ?>

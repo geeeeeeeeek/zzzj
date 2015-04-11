@@ -5,7 +5,6 @@
     else
         $category=0;
     $category=(intval($category));
-    echo $category;
     if (!isset($_SESSION['userid']))
         die("Error.");
     $result=[];

@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    //session_start();
     require("getques.php");  //计算题号$id, 题目$str,答案$ans,时限time
     header("Content-type: image/png");
 

@@ -22,13 +22,14 @@ $(document).ready(function () {
             type: "get",
             async: false,
             success: function (data) {
-                if (data == 1) {
+                /*if (data == 1) {
                     permit = true;
                     $("#content-inf").html("恭喜您进入复赛~点击下一步进入答题!");
                 }
                 else {
                     $("#intro .next").attr("href", "http://stu.fudan.edu.cn");
-                }
+                }*/
+                permit=true;
             }
         })
         $(".page-wrap").hide();

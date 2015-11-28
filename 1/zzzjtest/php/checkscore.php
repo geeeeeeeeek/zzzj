@@ -1,5 +1,4 @@
 <?php
-	session_start();
 	require_once("connectsql.php");
 	$string = "update user set quesnum=100 where id= (".$_SESSION['userid'].")";
 	mysqli_query($con, $string);

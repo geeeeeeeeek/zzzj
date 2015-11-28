@@ -1,5 +1,4 @@
 <?php
-	session_start();
 	$result=$_GET['result'];
 	$fail=false;
 	$appsecret='69bda099d725db3f6a014797ae4fbd4260035b8fe2941184639d7df7240471bf';
@@ -28,8 +27,8 @@
 			$username=$_GET['username'];
 		else
 			$username="";
-		if($sign==strtolower(hash("sha256",$token."|".$uid."|".$username."|".$stuid."|".$email."|".$appsecret))){
-			$_SESSION['userid']=$stuid;
+		if($sign===strtolower(hash("sha256",$token."|".$uid."|".$username."|".$stuid."|".$email."|".$appsecret))){
+			$_SESSION['userid']=mysqli_real_escape_string($con,$stuid);
 		}
 		else
 			$fail=true;
@@ -42,8 +41,6 @@
 	else{
 		$url="http://stu.fudan.edu.cn/ztalents/main.html";
 	}
-	echo "<script language='javascript' type='text/javascript'>";
-	echo "window.location='".$url."'";
-	echo "</script>";
-	
+	header("Location: {$url}");
+	exit();
 ?>

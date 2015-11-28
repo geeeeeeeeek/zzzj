@@ -20,7 +20,5 @@
 	$stringtemp=$returnurl."|".$appid."|".$state."|||".$appsecret;
 	$sign=hash('sha256',$stringtemp);
 	$url = "http://stu.fudan.edu.cn/teleport/gateway/request?returnurl=".$returnurl."&appid=".$appid."&state=".$state."&sign=".$sign;
-	echo "<script language='javascript' type='text/javascript'>";
-	echo "window.location.href='$url'";
-	echo "</script>";
+	header("Location: {$url}");
 ?>
